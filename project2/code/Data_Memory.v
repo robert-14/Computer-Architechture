@@ -68,7 +68,7 @@ always@(posedge clk_i or negedge rst_i) begin
 	end
 end
 
-always@(posedge clk_i) begin
+always@(posedge clk_i or negedge rst_i) begin
 	if(~rst_i) begin
 		count <= 4'd0;
 	end
@@ -89,7 +89,7 @@ end
 
 assign ack = (state == STATE_WAIT) && (count == 4'd9);
 
-always@(posedge clk_i) begin
+always@(posedge clk_i or negedge rst_i) begin
 	if(~rst_i) begin
 		write_reg <= 0;
 	end
@@ -110,14 +110,14 @@ end
 
 // Read Data       
 always@(posedge clk_i) begin
-    if(ack && !write_reg) begin
+    if(ack && !MemWrite_i) begin
 		data = memory[addr];
 	end
 end
 
 // Write Data      
 always@(posedge clk_i) begin
-    if(ack && write_reg) begin
+    if(ack && MemWrite_i) begin
 		memory[addr] <= data_i;
 	end
 end

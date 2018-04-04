@@ -8,7 +8,7 @@ module ALU_Control
 input [5:0] funct_i;
 input [1:0] ALUOp_i;
 output [2:0] ALUCtrl_o;
-reg ALUCtrl_o = 0;
+reg ALUCtrl_o;
 always@(funct_i or ALUOp_i)
 begin
 	if(ALUOp_i == 2'b11) //R type

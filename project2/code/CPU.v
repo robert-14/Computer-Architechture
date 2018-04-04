@@ -50,8 +50,7 @@ wire [31:0] MUX5_o;
 wire [4:0] MW_RegistersRD_o;
 wire MW_RegWrite_o;
 // cache
-wire stall_o;
-//initial stall_o = 0;
+wire stall_o, write_o;
 wire branch, Branch_o;
 
 and and1(branch,Branch_o,eq);

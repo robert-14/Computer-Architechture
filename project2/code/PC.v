@@ -21,7 +21,7 @@ input   [31:0]      pc_i;
 output  [31:0]      pc_o;
 
 // Wires & Registers
-reg     [31:0]      pc_o = 32'b0;
+reg     [31:0]      pc_o;
 
 
 always@(posedge clk_i or negedge rst_i) begin
@@ -30,10 +30,11 @@ always@(posedge clk_i or negedge rst_i) begin
     end
     else begin
 		pc_o <= pc_o;
-		if( stall_i) begin
+		if(stall_i) begin
+			pc_o <= pc_o;
     	end
-        else if( write_i != 0) begin
-            if(start_i) begin
+        else if(write_i) begin
+            if(start_i || pcEnable_i) begin
                 pc_o <= pc_i;
             end
             else begin

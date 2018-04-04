@@ -18,8 +18,8 @@ input Hazard_i;
 output [1:0] ALUOp_o;
 output RegDst_o, ALUSrc_o, RegWrite_o;
 output MemtoReg_o, MemWrite_o, MemRead_o, Branch_o, Jump_o; //lw sw beq j
-reg RegDst_o = 0, ALUSrc_o = 0, RegWrite_o = 0, ALUOp_o = 0;
-reg MemtoReg_o = 0, MemWrite_o = 0, MemRead_o = 0, Branch_o = 0, Jump_o = 0;
+reg RegDst_o, ALUSrc_o, RegWrite_o, ALUOp_o;
+reg MemtoReg_o, MemWrite_o, MemRead_o, Branch_o, Jump_o;
 always@(Op_i, Hazard_i)
 begin
         if(Hazard_i == 1'b1)

@@ -16,6 +16,8 @@ reg pc_o, inst_o;
 always@(posedge clk_i)
 begin // modified at 12/8 18:46 by toetoe
 	if(stall_i) begin
+	pc_o <= pc_o;
+	inst_o <= inst_o;
 	end
 	else begin
 		if(write_i == 0)

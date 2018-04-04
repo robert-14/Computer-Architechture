@@ -11,7 +11,7 @@ input [31:0] data1_i, data2_i;
 input [2:0] ALUCtrl_i;
 output [31:0] data_o;
 output Zero_o;
-reg Zero_o = 0, data_o = 0;
+reg Zero_o, data_o;
 // wire can't be assign in always block
 always @(data1_i or data2_i or ALUCtrl_i)
 begin
